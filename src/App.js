@@ -1,67 +1,41 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-const foodILike = [
-  {
-    id: 1,
-    name: "Kimchi",
-    rating: 10,
-    image:
-      "http://aeriskitchen.com/wp-content/uploads/2008/09/kimchi_bokkeumbap_02-.jpg"
-  },
-  {
-    id: 2,
-    name: "Samgyeopsal",
-    rating: 8,
-    image:
-      "https://3.bp.blogspot.com/-hKwIBxIVcQw/WfsewX3fhJI/AAAAAAAAALk/yHxnxFXcfx4ZKSfHS_RQNKjw3bAC03AnACLcBGAs/s400/DSC07624.jpg"
-  },
-  {
-    id: 3,
-    name: "Bibimbap",
-    rating: 6,
-    image:
-      "http://cdn-image.myrecipes.com/sites/default/files/styles/4_3_horizontal_-_1200x900/public/image/recipes/ck/12/03/bibimbop-ck-x.jpg?itok=RoXlp6Xb"
-  },
-  {
-    id: 4,
-    name: "Doncasu",
-    rating: 4,
-    image:
-      "https://s3-media3.fl.yelpcdn.com/bphoto/7F9eTTQ_yxaWIRytAu5feA/ls.jpg"
-  },
-  {
-    id: 5,
-    name: "Kimbap",
-    rating: 7
+
+class App extends React.Component {
+  state = {
+    count: 0,
   }
-];
-
-Food.propTypes = {
-  name: PropTypes.string.isRequired,
-  rating: PropTypes.number.isRequired,
-  picture: PropTypes.string,
-};
-
-function Food({ name, picture, rating }) {
-  return (
-    <div>
-      <h2>I like {name}</h2>
-      <h3>rating: {rating}/10</h3>
-      { picture && <img src={picture} alt={name} />}
-    </div>
-  );
-}
-
-function App() {
-  return (
-    <div className="App">
-      Hello
+  add = () => { 
+    this.setState(state => (
       {
-        foodILike.map(({id, name, image, rating}) => <Food key={id} name={name} picture={image} rating={rating} />)
+        count: state.count + 1,
       }
-    </div>
-  );
+    ))
+  }
+  minus = () => { 
+    this.setState(state => (
+      {
+        count: state.count - 1,
+      }
+    ))
+  }
+  componentDidMount(){
+    console.log('Component mounted');
+  }
+  componentDidUpdate(){
+    console.log('I just upadeted!');
+  }
+  render() {
+    console.log('Component Rendered')
+    const {count} = this.state;
+    return (
+      <div>
+        <h1>The number is {count}</h1>
+        <button type="button" onClick={this.add}>Add</button>
+        <button type="button" onClick={this.minus}>Minus</button>
+      </div>
+    );
+  }
 }
 
 export default App;
