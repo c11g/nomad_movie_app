@@ -81,3 +81,10 @@ body,
   margin-right: 10px;
   font-size: 14px;
 }
+
+.movie__summary {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+}
