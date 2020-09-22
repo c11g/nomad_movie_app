@@ -12,7 +12,7 @@ const App = () => {
       <Navigation />
       <Route path="/" exact={true} component={Main} />
       <Route path="/about" component={About} />
-      <Route path="/detail" component={Detail} />
+      <Route path="/movie/:id" component={Detail} />
     </HashRouter>
   );
 }
